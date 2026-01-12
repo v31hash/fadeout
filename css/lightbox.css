@@ -214,7 +214,7 @@
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-  .info-panel { height: 550px; width: 350px; left: -150px; top: 15px; }
+  .info-panel { height: 550px; width: 350px; left: -125px; top: 15px; }
 }
   /* Keep layout tight on small screens */
   .video-embed {
@@ -283,7 +283,7 @@
 /* 3) Reduce inner padding on narrow screens so inset + padding don't stack too much */
 @media (max-width: 720px) {
   .lightbox__content {
-    font-size: .6rem;
+    font-size: .8rem;
   }
   .lightbox .movie-hero {
     padding: 5px;           /* was 24px */
