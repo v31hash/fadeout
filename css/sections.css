@@ -353,10 +353,9 @@
   padding: 0;
   /* background: linear-gradient(135deg, var(--gray-50) 0%); */
   /* background-image: url(../assets/images/hero.png); */
-background: #BA8B02;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #181818, #BA8B02);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #BA8B02;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #181818, #BA8B02);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -366,7 +365,7 @@ background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Fir
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);
-  padding: 30px 40px;
+  padding: 5px 40px;
   align-items: center;
 }
 
@@ -1098,7 +1097,7 @@ background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Fir
 /* Mobile Styles */
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 0 40px;
+    padding: 10px 0 40px;
   }
 
   .hero-content {
@@ -1189,7 +1188,7 @@ background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Fir
 /* Small Mobile Styles */
 @media (max-width: 480px) {
   .hero {
-    padding: 70px 0 30px;
+    padding: 20px 40px 20px;
   }
 
   .hero-title {
