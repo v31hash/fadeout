@@ -283,7 +283,7 @@
 /* 3) Reduce inner padding on narrow screens so inset + padding don't stack too much */
 @media (max-width: 720px) {
   .lightbox__content {
-    font-size: .8rem;
+    font-size: .7rem;
   }
   .lightbox .movie-hero {
     padding: 5px;           /* was 24px */
