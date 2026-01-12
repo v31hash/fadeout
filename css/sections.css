@@ -45,14 +45,14 @@
   font-size: 1.25rem;
 }
 
-.nav-brand-logo {
+.brand-logo {
   height: 80px;
   width: auto;
   margin-right: var(--space-3);
   transition: transform 0.2s ease;
 }
 
-.nav-brand-logo:hover {
+.brand-logo:hover {
   transform: scale(1.05);
 }
 
@@ -1365,7 +1365,7 @@ background: linear-gradient(to top, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Fir
   opacity: 0.8;
 }
 
-.footer-brand-logo {
+.brand-logo {
   height: 95px;
   width: auto;
   margin-right: var(--space-3);
