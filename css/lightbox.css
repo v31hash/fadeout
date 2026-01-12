@@ -214,7 +214,7 @@
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-  .info-panel { height: 450px; width: 350px; top: 15px; }
+  .info-panel { height: 450px; width: 350px; right: 100px; top: 15px; }
 }
   /* Keep layout tight on small screens */
   .video-embed {
