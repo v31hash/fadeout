@@ -1100,6 +1100,10 @@
     padding: 10px 0 40px;
   }
 
+  .sResults {
+    display: none;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
     gap: var(--space-8);
@@ -1189,6 +1193,10 @@
 @media (max-width: 480px) {
   .hero {
     padding: 20px 40px 20px;
+  }
+  
+  .sResults {
+    display: none;
   }
 
   .hero-title {
