@@ -52,10 +52,10 @@
               <div class="nav-actions">
                 <a class="cart-link" title="Nav Actions">
                   <div class="cart-icon">
-                    <img class="nav-action-icons" src="assets/facebook.png" alt="plusIcon">
-                    <img class="nav-action-icons" src="assets/twitter.png" alt="searchIcon">
-                    <img class="nav-action-icons" src="assets/instagram.png" alt="moreIcon">
-                    <img class="nav-action-icons" src="assets/linkedin.png" alt="plusIcon">
+                    <img class="nav-action-icons" src="assets/facebook.png" alt="facebook">
+                    <img class="nav-action-icons" src="assets/twitter.png" alt="twitter">
+                    <img class="nav-action-icons" src="assets/instagram.png" alt="instagram">
+                    <img class="nav-action-icons" src="assets/linkedin.png" alt="linkedin">
                   </div>
                 </a>
               </div>
@@ -71,14 +71,10 @@
         
         <div class="mobile-menu" [class.open]="mobileMenuOpen">
           <div class="mobile-menu-content">
-            <a href="#movies">Movies</a>
+            <a class="active" href="#movies">Movies</a>
             <a href="#tv">TV Shows</a>
-            <a href="watchlist.html">Watchlist</a>
+            <a href="#ftw">Free to Watch</a>
             <a href="search.html">Search</a>
-            <div class="mobile-menu-divider"></div>
-            <div class="mobile-auth-buttons">
-              <a (click)="closeMobileMenu()" class="nav-action-link mobile-btn">Login</a>
-              <a (click)="closeMobileMenu()" class="nav-action-primary-link mobile-btn">Sign Up</a>
             </div>
           </div>
         </div>
@@ -554,28 +550,10 @@
                       <img src="https://image.tmdb.org/t/p/original/7SHFZKfd270y47sXN2WsURUO3ml.jpg" alt="Captain Hook: The Cursed Tides poster">
                       <figcaption class="sr-only">Trailer</figcaption>
                     </figure>
-                    <div class="poster-card__cta">
-                      <!-- <img src="assets/hooke-logo.svg" class="poster-card__service-logo" alt="Hooke service logo"> -->
-                      <!-- <a href="#watch" class="btn btn--primary">Watch Now</a> -->
-                    </div>
                   </aside> <!-- Left: Poster Card -->
 
                   <!-- Right: Info Panel -->
                   <div class="info-panel">
-
-                    <!-- Movie Trailer -->
-                    <div class="video-embed" aria-label="Trailer">
-                      <iframe
-                        class="video-embed__frame"
-                        src="https://www.youtube-nocookie.com/embed/VVrs2GQmUOs?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
-                        title="Captain Hook: The Cursed Tides — Trailer"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        referrerpolicy="strict-origin-when-cross-origin">
-                      </iframe>
-                    </div>
-
                     <!-- Movie Info -->
                     <header class="info-panel__header">
                       <h1 class="title">
