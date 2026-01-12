@@ -49,14 +49,7 @@ function selectTopCredits(credits, type = 'movie') {
     }
     (closeBtn ?? dialog).focus();
   }
-  function stopEmbeddedVideo() {
-    const iframe = dialog.querySelector('.video-embed__frame');
-    if (iframe && iframe.parentNode) {
-      iframe.parentNode.removeChild(iframe); // remove iframe entirely
-    }
-  }
   function closeDialog() {
-    stopEmbeddedVideo();
     if (typeof dialog.close === 'function') {
       dialog.close();
       document.documentElement.style.overflow = '';
@@ -74,6 +67,7 @@ function selectTopCredits(credits, type = 'movie') {
     const yearEl     = dialog.querySelector('.title__year');
     const metaEls    = dialog.querySelectorAll('.meta li');
     const scoreEl    = dialog.querySelector('.score-badge__value');
+    const trailerEl  = dialog.querySelector('.btn.btn--ghost');
     const taglineEl  = dialog.querySelector('.tagline');
     const overviewP  = dialog.querySelector('.overview p');
     const creditsBox = dialog.querySelector('.credits');
@@ -93,6 +87,7 @@ function selectTopCredits(credits, type = 'movie') {
     if (metaEls[3]) metaEls[3].textContent = formatRuntime(movie.runtime);
 
     if (scoreEl) scoreEl.textContent = movie.getScorePercentage();
+    if (trailerEl) trailerEl.href = `https://www.youtube.com/watch?v=${movie.trailerKey}`;
     if (taglineEl) taglineEl.textContent = movie.tagline ?? '';
     if (overviewP) overviewP.textContent = movie.overview ?? '';
 
@@ -106,27 +101,7 @@ function selectTopCredits(credits, type = 'movie') {
       });
     }
 
-    // Trailer: create/remove iframe
-    const embedWrapper = dialog.querySelector('.video-embed');
-    let iframeEl = dialog.querySelector('.video-embed__frame');
-    if (movie.trailerKey) {
-      if (!iframeEl && embedWrapper) {
-        iframeEl = document.createElement('iframe');
-        iframeEl.className = 'video-embed__frame';
-        iframeEl.title = 'Trailer';
-        iframeEl.loading = 'lazy';
-        iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframeEl.referrerPolicy = 'strict-origin-when-cross-origin';
-        iframeEl.allowFullscreen = true;
-        embedWrapper.appendChild(iframeEl);
-      }
-      if (iframeEl) {
-        iframeEl.src = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
-        iframeEl.hidden = false;
-      }
-    } else if (iframeEl && iframeEl.parentNode) {
-      iframeEl.parentNode.removeChild(iframeEl);
-    }
+
   }
 
   // ---- Populate for TV ----
@@ -136,6 +111,7 @@ function selectTopCredits(credits, type = 'movie') {
     const yearEl     = dialog.querySelector('.title__year');
     const metaEls    = dialog.querySelectorAll('.meta li');
     const scoreEl    = dialog.querySelector('.score-badge__value');
+    const trailerEl  = dialog.querySelector('.btn.btn--ghost');
     const taglineEl  = dialog.querySelector('.tagline');
     const overviewP  = dialog.querySelector('.overview p');
     const creditsBox = dialog.querySelector('.credits');
@@ -158,6 +134,7 @@ function selectTopCredits(credits, type = 'movie') {
     }
 
     if (scoreEl) scoreEl.textContent = show.getScorePercentage();
+    if (trailerEl) trailerEl.href = `https://www.youtube.com/watch?v=${show.trailerKey}`;
     if (taglineEl) taglineEl.textContent = show.tagline ?? '';
     if (overviewP) overviewP.textContent = show.overview ?? '';
 
@@ -169,27 +146,6 @@ function selectTopCredits(credits, type = 'movie') {
         c.innerHTML = `<span class="credit__name">${name}</span><span class="credit__role">${role}</span>`;
         creditsBox.appendChild(c);
       });
-    }
-
-    const embedWrapper = dialog.querySelector('.video-embed');
-    let iframeEl = dialog.querySelector('.video-embed__frame');
-    if (show.trailerKey) {
-      if (!iframeEl && embedWrapper) {
-        iframeEl = document.createElement('iframe');
-        iframeEl.className = 'video-embed__frame';
-        iframeEl.title = 'Trailer';
-        iframeEl.loading = 'lazy';
-        iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframeEl.referrerPolicy = 'strict-origin-when-cross-origin';
-        iframeEl.allowFullscreen = true;
-        embedWrapper.appendChild(iframeEl);
-      }
-      if (iframeEl) {
-        iframeEl.src = `https://www.youtube.com/embed/${show.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
-        iframeEl.hidden = false;
-      }
-    } else if (iframeEl && iframeEl.parentNode) {
-      iframeEl.parentNode.removeChild(iframeEl);
     }
   }
 
