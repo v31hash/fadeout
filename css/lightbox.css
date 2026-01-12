@@ -205,7 +205,7 @@
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-  .info-panel { height: 550px; width: 450px; left: -30px; }
+  .info-panel { height: 550px; width: 450px; }
 }
 
 @media (max-width: 720px) {
