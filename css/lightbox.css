@@ -370,7 +370,7 @@
     width: auto;
   }
   .movie-hero__content {
-    grid-template-columns: minmax(100px, 480px) 1fr;
+    grid-template-columns: minmax(100px, 580px) 1fr;
     gap: clamp(5px, 1vw, var(--gap));
   }
   .lightbox .movie-hero {
