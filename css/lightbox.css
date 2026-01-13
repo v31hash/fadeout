@@ -361,7 +361,8 @@
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-
+  
+  
   .movie-hero {
     /* grid-template-columns: minmax(100px, 480px) 1fr;
     gap: clamp(5px, 1vw, var(--gap)); */
