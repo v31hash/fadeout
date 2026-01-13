@@ -361,8 +361,6 @@
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-  
-  .info-panel { height: auto; width: 365px; left: -40px; top: 0px; }
 
   .movie-hero {
     /* grid-template-columns: minmax(100px, 480px) 1fr;
@@ -380,4 +378,6 @@
     background: var(--bg);
     /* padding: 24px; */
   }
+
+  .info-panel { height: auto; width: 360px; left: -40px; top: 0px; }
 }
