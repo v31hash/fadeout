@@ -378,6 +378,5 @@
     background: var(--bg);
     /* padding: 24px; */
   }
-
-  .info-panel { height: auto; width: 360px; left: -40px; top: 0px; }
+  .info-panel { height: auto; width: 340px; left: -40px; top: 0px; }
 }
