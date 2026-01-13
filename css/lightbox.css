@@ -362,12 +362,12 @@
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
   
-  .info-panel { height: auto; width: 325px; left: -60px; top: 15px; }
+  .info-panel { height: auto; width: 365px; left: -100px; top: 0px; }
 
   .movie-hero {
     /* grid-template-columns: minmax(100px, 480px) 1fr;
     gap: clamp(5px, 1vw, var(--gap)); */
-    width: 400px;
+    width: auto;
   }
   .movie-hero__content {
     grid-template-columns: minmax(100px, 580px) 1fr;
