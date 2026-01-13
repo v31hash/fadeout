@@ -362,7 +362,7 @@
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
   
-  .info-panel { height: auto; width: 365px; left: -100px; top: 0px; }
+  .info-panel { height: auto; width: 365px; left: -70px; top: 0px; }
 
   .movie-hero {
     /* grid-template-columns: minmax(100px, 480px) 1fr;
