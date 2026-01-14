@@ -1529,6 +1529,9 @@
   }
   .section-header {
     margin-bottom: var(--space-6) !important;
+    padding: 0 40px;
+    margin-bottom: var(--space-6);
+    text-align: left;
   }
   /* Cart mobile adjustments */
   .cart-page {
