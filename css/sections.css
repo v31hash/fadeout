@@ -1455,18 +1455,7 @@
   .nav-brand-text {
     font-size: 1.125rem;
   }
-  .mobile-menu-content {
-    padding: 80px var(--space-4) var(--space-4);
-    gap: var(--space-4);
-  }
-  .mobile-menu-content a {
-    padding: var(--space-3) 0;
-    font-size: 1rem;
-  }
-  .mobile-btn {
-    padding: var(--space-3) var(--space-5);
-    font-size: 0.875rem;
-  }
+  
 
   .hero {
     padding: 20px 40px 20px;
@@ -1529,8 +1518,8 @@
   }
 
   .section-header {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    justify-content
     align-items: center;
     align-content: center;
     text-align: center;
