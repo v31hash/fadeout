@@ -1527,12 +1527,22 @@
   .cta {
     padding: 1.5rem 0 !important;
   }
+
   .section-header {
-    margin-bottom: var(--space-6) !important;
-    padding: 0 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    text-align: center;
     margin-bottom: var(--space-6);
-    text-align: left;
   }
+
+  .section-header h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+  }
+
   /* Cart mobile adjustments */
   .cart-page {
     padding: 100px 0 var(--space-12) !important;
