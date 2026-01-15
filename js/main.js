@@ -22,7 +22,69 @@ window.addEventListener('DOMContentLoaded', () => {
   //     }
   //   });
   // }
-  
+});
+
+
+// Hide header on scroll down, show on scroll up
+window.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.header');
+  const mobileMenu = document.querySelector('.mobile-menu'); // optional
+  if (!header) return;
+
+  let lastY = window.scrollY || document.documentElement.scrollTop;
+  let ticking = false;
+  const THRESHOLD = 10;     // ignore tiny scrolls
+  const MIN_TOP_TO_HIDE = 60; // don't hide near very top
+
+  const isMenuOpen = () => mobileMenu?.classList.contains('open');
+
+  function onScroll() {
+    const y = window.scrollY || document.documentElement.scrollTop;
+
+    // Always show when near very top
+    if (y <= MIN_TOP_TO_HIDE) {
+      header.classList.remove('hidden');
+      lastY = y;
+      ticking = false;
+      return;
+    }
+
+    // Don't auto-hide when the mobile drawer is open
+    if (isMenuOpen()) {
+      header.classList.remove('hidden');
+      lastY = y;
+      ticking = false;
+      return;
+    }
+
+    const delta = y - lastY;
+
+    // Only react if the movement is meaningful
+    if (Math.abs(delta) > THRESHOLD) {
+      if (delta > 0) {
+        // scrolling down -> hide
+        header.classList.add('hidden');
+      } else {
+        // scrolling up -> show
+        header.classList.remove('hidden');
+      }
+      lastY = y;
+    }
+
+    ticking = false;
+  }
+
+  // Use rAF to keep it jank-free
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Ensure header is visible after resize or orientation change
+  window.addEventListener('resize', () => header.classList.remove('hidden'));
+  window.addEventListener('orientationchange', () => header.classList.remove('hidden'));
 });
 
 
