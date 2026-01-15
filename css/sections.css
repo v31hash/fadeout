@@ -492,6 +492,22 @@
   cursor: not-allowed;
 }
 
+.movies {
+  background-color: var(--primary-50);
+}
+
+.search {
+  background-color: var(--primary-200);
+}
+
+.search {
+  background-color: var(--primary-200);
+}
+
+.search {
+  background-color: var(--primary-200);
+}
+
 .movie-hero {
   background: var(--bg);
   color: var(--text);
