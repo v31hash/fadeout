@@ -24,3 +24,27 @@ window.addEventListener('DOMContentLoaded', () => {
   // }
   
 });
+
+
+// Smooth-scroll to top when the header is tapped/clicked
+window.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('appHeader');
+  if (!header) return;
+
+  const scrollToTop = () => {
+    // If you use a custom scroll container, replace 'window' with that element
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Click (mouse) + tap (touch)
+  header.addEventListener('click', scrollToTop, { passive: true });
+
+  // Optional: make a tiny top "hit area" also trigger (for users who tap above the header)
+  // This is useful on Android where status bar tap isn't supported.
+  document.addEventListener('touchstart', (e) => {
+    const y = e.touches?.[0]?.clientY ?? 0;
+    if (y <= 8) { // taps within the top 8px of the viewport
+      scrollToTop();
+    }
+  }, { passive: true });
+});
