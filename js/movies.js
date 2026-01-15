@@ -85,7 +85,8 @@ function renderMovies(movies, max) {
     title.textContent = show.title || 'Untitled';
 
     const date = document.createElement('span');
-    date.textContent = show.releaseDate || 'Date not available';
+    const pretty = formatTMDBDate(show.releaseDate, 'en-US');
+    date.textContent = pretty ?? 'Date not available';
 
     // >>>> build DOM <<<<<
     mScoreBadge.appendChild(score);
