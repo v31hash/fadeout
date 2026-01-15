@@ -95,10 +95,17 @@ body {
   font-family: var(--font-family);
   line-height: var(--line-height-body);
   color: var(--gray-900);
-  background-color: #ffffff;
+  background-color: var(--accent-700);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;         /* prevents accidental horizontal scroll leaks */
+}
+
 
 /* Utility Classes */
 .container {
