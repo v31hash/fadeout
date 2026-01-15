@@ -14,7 +14,7 @@ function formatTMDBDate(dateStr, locale = 'en-US') {
   const [y, m, d] = dateStr.split('-').map(Number);
   const date = new Date(Date.UTC(y, m - 1, d));
   return new Intl.DateTimeFormat(locale, {
-    month: 'long',
+    month: 'short',
     day: 'numeric',
     year: 'numeric',
     timeZone: 'UTC',
