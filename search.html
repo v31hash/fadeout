@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="css/global_styles.css">
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/lightbox.css">
-    <script src="js/Main.js" async defer></script>
     <script src="js/Movie.js" async defer></script>
     <script src="js/TVShow.js" async defer></script>
     <script src="js/multiSearch.js" async defer></script>
@@ -90,7 +89,7 @@
                 <form id="inner_search_form" onsubmit="searchTitles({ page: 1 }); return false;">
                   <label for="txtSearch" class="sr-only">Search</label>
                   <span>
-                    <input id="txtSearch" type="text" placeholder="search for movie">
+                    <input class="search-input" id="txtSearch" placeholder="search for movies & tv shows....." type="search" autocorrect="on" autocomplete="on" spellcheck="true" inputmode="text" aria-label="Search Input">
                   </span>
                 </form>
               </div>
