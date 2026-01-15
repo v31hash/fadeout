@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="css/global_styles.css">
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/lightbox.css">
-    <script src="js/jquery.js" async defer></script> <!-- (not used by this page, you can drop it) -->
     <script src="js/Movie.js" async defer></script>
     <script src="js/TVShow.js" async defer></script>
     <script src="js/multiSearch.js" async defer></script>
@@ -62,7 +61,7 @@
                 </a>
               </div>
               
-              <button class="mobile-menu-btn" onclick='toggleMenu();'>
+              <button class="mobile-menu-btn" onclick="toggleMenu();" aria-expanded="false" aria-controls="mobileMenu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -71,7 +70,7 @@
           </div>
         </nav>
         
-        <div class="mobile-menu" [class.open]="mobileMenuOpen">
+        <div class="mobile-menu" id="mobileMenu">
           <div class="mobile-menu-content">
             <a href="index.html">Movies</a>
             <a href="#tv">TV Shows</a>
@@ -328,4 +327,43 @@
       </footer>
     </div>
   </body>
+  <script>
+    (function () {
+      const btn  = document.querySelector('.mobile-menu-btn');
+      const menu = document.getElementById('mobileMenu');
+
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        menu.classList.add('open');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.documentElement.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.documentElement.style.overflow = '';
+        btn.focus();
+      }
+
+      // Expose globally for inline onclick
+      window.toggleMenu = function toggleMenu() {
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      };
+
+      // Close when a link is clicked
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+      // Escape closes
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('open')) {
+          e.preventDefault();
+          closeMenu();
+        }
+      });
+    })();
+  </script>
 </html>
