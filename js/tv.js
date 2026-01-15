@@ -85,7 +85,8 @@ function renderTV(tvShows, max) {
     title.textContent = show.name || 'Untitled';
 
     const date = document.createElement('span');
-    date.textContent = show.firstAirDate || 'Date not available';
+    const pretty = formatTMDBDate(show.firstAirDate, 'en-US'); // <-- format here
+    date.textContent = pretty ?? 'Date not available';
 
     // >>>> build divs <<<<<
     mScoreBadge.appendChild(score);
