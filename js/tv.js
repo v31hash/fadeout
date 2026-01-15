@@ -8,6 +8,19 @@ export async function loadTV({ apiKey, baseUrl, max = 20 }) {
   renderTV(items, max);
 }
 
+// date prittier
+function formatTMDBDate(dateStr, locale = 'en-US') {
+  if (typeof dateStr !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null;
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  return new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
+}
+
 function renderTV(tvShows, max) {
   const head = document.querySelector('.tvHead');
   const grid = document.querySelector('.tv-grid');
