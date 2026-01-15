@@ -2,7 +2,7 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--warning-500);
+  /* background-color: var(--warning-500); */
 }
 
 .main-content {
