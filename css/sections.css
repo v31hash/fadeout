@@ -388,7 +388,7 @@
 
 .switch-button-label::before {
   content: "";
-  background: var(--primary-900);
+  background: var(--primary-950);
   height: 100%;
   width: 100%;
   position: absolute;
