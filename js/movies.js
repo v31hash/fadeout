@@ -1,28 +1,34 @@
 
-// Public API: loadMovies({ apiKey, baseUrl, max })
-export async function loadMovies({ apiKey, baseUrl, max = 6 }) {
-  const res = await fetch(`${baseUrl}trending/movie/week?api_key=${apiKey}`);
-  if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-  const data = await res.json();
-  const items = (data.results ?? []).map(Movie.fromJson);
-  renderMovies(items, max);
+// ===== Toggle & helpers =====
+const movieToggle = document.getElementById('movie-switch-button-checkbox');
+
+function getPeriod() {
+  // Checked => "week", Unchecked => "day"
+  return movieToggle?.checked ? 'week' : 'day';
 }
 
-// =============================
-// Helpers
-// =============================
+// Let main.js decide what to do when the toggle changes
+export function wireMovieToggle(onChange) {
+  if (!movieToggle) return;
+  movieToggle.addEventListener('change', () => {
+    onChange?.(getPeriod());
+  });
+}
 
-// date format: string (YYYY-MM-DD) to "Mon D, YYYY"
-function formatTMDBDate(dateStr, locale = 'en-US') {
-  if (typeof dateStr !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null;
-  const [y, m, d] = dateStr.split('-').map(Number);
-  const date = new Date(Date.UTC(y, m - 1, d));
-  return new Intl.DateTimeFormat(locale, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(date);
+// Public API: loadMovies({ apiKey, baseUrl, max })
+export async function loadMovies({ apiKey, baseUrl, max = 6 }) {
+  const period = getPeriod() ?? 'day';
+  const url = `${baseUrl}trending/movie/${period}?api_key=${apiKey}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const data = await res.json();
+    const items = (data.results ?? []).map(Movie.fromJson);
+    renderMovies(items, max);
+  } catch (err) {
+    console.error('Failed to load movies:', err);
+    renderMovies([], 0); // degrade gracefully
+  }
 }
 
 
