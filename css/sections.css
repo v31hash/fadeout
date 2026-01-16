@@ -336,7 +336,7 @@
 }
 
 .switch-button {
-  background: var(--gray-50);
+  background: var(--primary-200);
   border-radius: 30px;
   overflow: hidden;
   height: 32px;
@@ -345,7 +345,7 @@
   border: 1px solid black;
   font-size: 18px;
   letter-spacing: 1px;
-  color: var(--primary-950);
+  color: var(--gray-50);
   position: relative;
   padding-right: 100px;
 }
