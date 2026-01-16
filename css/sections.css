@@ -278,8 +278,7 @@
 .hero {
   padding: 15px 0;
   /* background: linear-gradient(135deg, var(--gray-50) 0%); */
-  /* background-image: url(../assets/images/hero.png); */
-  background: black;
+  background-image: url(../assets/images/hero2.png);
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -308,15 +307,21 @@
 }
 
 .hero-title {
-  /* font-size: 3.5rem; */
-  /* font-weight: 800; */
+  font-weight: 800;
   line-height: 1.2;
   color: var(--gray-300);
-  /* margin-bottom: var(--space-6); */
+  margin-bottom: var(--space-6);
+}
+
+.gradient-text {
+  background: linear-gradient(to bottom right, #b18bf5 0%, #efafbb 65%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero h2 {
-  font-size: 3rem;
+  /* font-size: 3rem; */
 }
 
 .hero-description {
