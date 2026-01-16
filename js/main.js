@@ -7,8 +7,8 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const MAX_TRENDS = 6;
 
 window.addEventListener('DOMContentLoaded', () => {
-  loadMovies({ apiKey: API_KEY, baseUrl: BASE_URL, max: MAX_TRENDS }); // from your file
-  loadTV({ apiKey: API_KEY, baseUrl: BASE_URL, max: MAX_TRENDS });     // from your file
+  loadMovies({ apiKey: API_KEY, baseUrl: BASE_URL, max: MAX_TRENDS }); // from file
+  loadTV({ apiKey: API_KEY, baseUrl: BASE_URL, max: MAX_TRENDS });     // from file
   
   // const searchBtn = document.querySelector('.search_action');
   // if (searchBtn) {
