@@ -33,6 +33,24 @@ export async function loadMovies({ apiKey, baseUrl, max = 6 }) {
 
 
 // =============================
+// Helpers
+// =============================
+
+// date format: string (YYYY-MM-DD) to "Mon D, YYYY"
+function formatTMDBDate(dateStr, locale = 'en-US') {
+  if (typeof dateStr !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null;
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  return new Intl.DateTimeFormat(locale, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
+}
+
+
+// =============================
 // Render movie cards
 // =============================
 function renderMovies(movies, max) {
