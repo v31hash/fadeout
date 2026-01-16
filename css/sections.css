@@ -336,7 +336,7 @@
 }
 
 .switch-button {
-  background: var(--primary-200);
+  background: var(--primary-400);
   border-radius: 30px;
   overflow: hidden;
   height: 32px;
