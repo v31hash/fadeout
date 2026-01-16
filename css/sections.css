@@ -345,7 +345,7 @@
   border: 1px solid black;
   font-size: 18px;
   letter-spacing: 1px;
-  color: var(--primary-500);
+  color: var(--primary-950);
   position: relative;
   padding-right: 100px;
 }
@@ -388,7 +388,7 @@
 
 .switch-button-label::before {
   content: "";
-  background: var(--primary-950);
+  background: var(--primary-900);
   height: 100%;
   width: 100%;
   position: absolute;
