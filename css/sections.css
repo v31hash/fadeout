@@ -320,8 +320,8 @@
   color: transparent;
 }
 
-.hero h2 {
-  /* font-size: 3rem; */
+.hero h1 {
+  font-size: 3rem;
 }
 
 .hero-description {
