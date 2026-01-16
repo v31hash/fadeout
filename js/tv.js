@@ -1,11 +1,34 @@
 
+// ===== Toggle & helpers =====
+const tvToggle = document.getElementById('tv-switch-button-checkbox');
 
+function getPeriod() {
+  // Checked => "week", Unchecked => "day"
+  return tvToggle?.checked ? 'week' : 'day';
+}
+
+// Let main.js decide what to do when the toggle changes
+export function wireTvToggle(onChange) {
+  if (!tvToggle) return;
+  tvToggle.addEventListener('change', () => {
+    onChange?.(getPeriod());
+  });
+}
+
+// Public API: loadShows({ apiKey, baseUrl, max })
 export async function loadTV({ apiKey, baseUrl, max = 6 }) {
-  const res = await fetch(`${baseUrl}trending/tv/week?api_key=${apiKey}`);
-  if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-  const data = await res.json();
-  const items = (data.results ?? []).map(TVShow.fromJson);
-  renderTV(items, max);
+  const period = getPeriod() ?? 'day';
+  const url = `${baseUrl}trending/tv/${period}?api_key=${apiKey}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const data = await res.json();
+    const items = (data.results ?? []).map(TVShow.fromJson);
+    renderTV(items, max);
+  } catch (err) {
+    console.error('Failed to load tv shows:', err);
+    renderTV([], 0); // degrade gracefully
+  }
 }
 
 
