@@ -1,6 +1,6 @@
 
 
-export async function loadTV({ apiKey, baseUrl, max = 20 }) {
+export async function loadTV({ apiKey, baseUrl, max = 6 }) {
   const res = await fetch(`${baseUrl}trending/tv/week?api_key=${apiKey}`);
   if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
   const data = await res.json();
@@ -8,7 +8,12 @@ export async function loadTV({ apiKey, baseUrl, max = 20 }) {
   renderTV(items, max);
 }
 
-// date prettier
+
+// =============================
+// Helpers
+// =============================
+
+// date prettier: string (YYYY-MM-DD) to "Mon D, YYYY"
 function formatTMDBDate(dateStr, locale = 'en-US') {
   if (typeof dateStr !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null;
   const [y, m, d] = dateStr.split('-').map(Number);
@@ -21,6 +26,10 @@ function formatTMDBDate(dateStr, locale = 'en-US') {
   }).format(date);
 }
 
+
+// =============================
+// Render tv cards
+// =============================
 function renderTV(tvShows, max) {
   const head = document.querySelector('.tvHead');
   const grid = document.querySelector('.tv-grid');
@@ -28,8 +37,11 @@ function renderTV(tvShows, max) {
 
   head.textContent = 'TV Shows Trending';
   grid.innerHTML = '';
+
+  // Limit if max is provided
+  const list = Number.isFinite(max) ? tvShows.slice(0, max) : tvShows;
   
-  tvShows.forEach(show => {
+  list.forEach(show => {
     // *********** Card *************
     const mCardDiv = document.createElement('div');
     mCardDiv.classList.add('media-card', 'mCard');
@@ -41,11 +53,15 @@ function renderTV(tvShows, max) {
     const posterDiv = document.createElement('div');
     const poster = document.createElement('img');
     poster.classList.add('media-poster');
+
     const posterUrl = show.getPosterUrl();
     poster.src = posterUrl;
     poster.alt = show.name || 'Untitled';
     poster.id = show.id;
-    poster.addEventListener('click', () => getTvDetails(show.id));
+
+    poster.addEventListener('click', () => {
+      window.getTvDetails?.(show.id);
+    });
 
     // *********** Score ***********
     const mScoreActions = document.createElement('div');
