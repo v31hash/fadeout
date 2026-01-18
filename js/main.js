@@ -5,7 +5,7 @@ import { initScrollTopButton } from './scrollTop.js';
 
 const API_KEY = 'cb7c7779c5c4232012594c012cf9a701';
 const BASE_URL = 'https://api.themoviedb.org/3/';
-const MAX_TRENDS = 6;
+const MAX_TRENDS = 14;
 
 
 window.addEventListener('DOMContentLoaded', () => {
