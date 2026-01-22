@@ -72,7 +72,7 @@
   text-decoration: none;
   color: var(--gray-50);
   font-weight: 500;
-  font-size: x-large;
+  font-size: large;
   transition: color 0.2s ease;
   position: relative;
   padding: var(--space-2) 0;
