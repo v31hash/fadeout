@@ -372,7 +372,16 @@
   overflow: hidden;
 }
 
-/* --- Mobile responsive --- */
+
+
+
+/* Optional: when dialog fallback uses non-native overlay */
+/* .lightbox__backdrop img {
+
+} */
+
+/* ===== Mobile Responsive ===== */
+/* Constrain for large screens */
 @media (max-width: 1155px) {
   .episode-card {
     display: grid;
@@ -387,29 +396,6 @@
   }
 }
 
-@media (max-width: 640px) {
-  .episode-card {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .episode-poster {
-    aspect-ratio: 16 / 9;
-  }
-
-  .eDetails {
-    padding: 1rem;
-  }
-}
-
-
-/* Optional: when dialog fallback uses non-native overlay */
-/* .lightbox__backdrop img {
-
-} */
-
-/* ===== Responsive ===== */
-/* Constrain for large screens */
 @media (min-width: 1024px) {
   .lightbox .movie-hero__content { max-width: 1200px; }
 
@@ -423,10 +409,15 @@
   /* .movie-hero__content { grid-template-columns: 280px 1fr; } */
   /* .movie-hero__content { grid-template-columns: minmax(200px, 370px) 1fr;} */
   .lightbox__content { height: auto; width: auto;}
-  .poster-card { display: none; }
-  .poster-card__figure img { display: none; }
+  /* .poster-card { display: none; }
+  .poster-card__figure img { display: none; } */
   .info-panel { height: auto; width: auto; left: 10px; }
   .lightbox__content { font-size: 0.9rem; }
+
+  .movie-backdrop {
+    background-image: linear-gradient(to bottom right, rgba(73.5, 94.5, 178.5, 1), rgba(73.5, 94.5, 178.5, 0.84)), url('https://image.tmdb.org/t/p/original/orxBgaJEQHVLApPmMQ2ehX9ORNb.jpg');
+    background-position: left calc((50vw - 170px) - 180px) top;
+  }
 
   .movie-hero {
     /* grid-template-columns: minmax(100px, 480px) 1fr;
@@ -453,8 +444,8 @@
   .poster-card { order: 1; }
   .info-panel { order: 2; }
   .lightbox__content { height: auto; width: auto;}
-  .poster-card { display: none; }
-  .poster-card__figure img { display: none; }
+  /* .poster-card { display: none; }
+  .poster-card__figure img { display: none; } */
   .info-panel { height: auto; width: auto; left: -85px; top: 15px; }
 
   .lightbox__content { font-size: 0.9rem; }
@@ -463,6 +454,9 @@
     /* grid-template-columns: minmax(100px, 480px) 1fr;
     gap: clamp(5px, 1vw, var(--gap)); */
     width: 600px;
+  }
+  .movie-backdrop {
+    background-position: left calc((50vw - 170px) - 75px) top;
   }
   .movie-hero__content {
     grid-template-columns: minmax(100px, 480px) 1fr;
@@ -505,9 +499,34 @@
   }
 }
 
+@media (max-width: 640px) {
+  .poster-card { display: none; }
+  .poster-card__figure img { display: none; }
+
+  .movie-hero_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .episode-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .episode-poster {
+    aspect-ratio: 16 / 9;
+  }
+
+  .eDetails {
+    padding: 1rem;
+  }
+}
 
 /* Small Mobile Styles */
 @media (max-width: 480px) {
+  .movie-backdrop {
+    background-position: left calc((50vw - 170px) - 40px) top;
+  }
+  
   .poster-card { order: 1; }
   .info-panel { order: 2; }
   .lightbox__content { height: auto; width: auto;}
