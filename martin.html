@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="css/global_styles.css">
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/media_page.css">
-    <!-- <script src="js/Movie.js" async defer></script>
-    <script src="js/TVShow.js" async defer></script>
-    <script src="js/multiSearch.js" async defer></script> -->
+    <!-- <script src="js/Movie.js" async defer></script> -->
+    <!-- <script src="js/TVShow.js" async defer></script> -->
+    <!-- <script src="js/embedVideo.js" async defer></script> -->
     <title>Fadeout</title>
   </head>
 
@@ -141,6 +141,24 @@
 
               <!-- Right: Info Panel -->
               <div class="movie-info-panel">
+
+                <!-- Modal -->
+                <div class="modal" id="trailerModal" aria-hidden="true">
+                  <div class="modal__backdrop" data-close="modal"></div>
+
+                  <div class="modal__content" role="dialog" aria-modal="true" aria-label="Trailer">
+                    <button class="modal__close" data-close="modal" aria-label="Close">✕</button>
+
+                    <div class="modal__videoWrap">
+                      <iframe id="trailerFrame"
+                              src=""
+                              title="Trailer"
+                              allow="autoplay; encrypted-media; picture-in-picture"
+                              allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Movie Info -->
                 <header class="panel-header">
                   <h1 class="title">
@@ -163,7 +181,9 @@
                     <!-- <button class="icon-btn" aria-label="Add to favorites">❤️</button>
                     <button class="icon-btn" aria-label="Add to list">➕</button>
                     <button class="icon-btn" aria-label="Share">🔗</button> -->
-                    <a href="#trailer" class="btn btn--ghost">▶ Play Trailer</a>
+                    <a class="btn btn--ghost" href="https://imdb-video.media-imdb.com/vi2207777049/1434659607842-pgv4ql-1564199247061.mp4?Expires=1769183551&Signature=JXuWbe8Hb1gxH9NYzHDTw9tLxA8FyMH~fv5hfRuUnvFLuxutPqFCjNMJcRUf8IEuDG3jyACJKil2D1CjbsPhYHuqUvlk5mOBU9VRqohZf6~qYH2gSyd49vY2kZ20zMZrDOwgqvXKakVUsX~EbWmbVT3ZkJ3HHds~D2YDSgh~8L1QDCSoFhRKYs5Lg74LLbJYuw3wXCJfV0Wd84YiRzDb80E6fCZvokswrAKFOySKXMU7IpoH60s~9ASfCSN8XjrkVX~WVafCILsg0ai1lXW6B2egyMpM42o159iZbA2e8Yf5KuT4n0HZ2WkBfoRvIToeWZIbVvZuSKBjZ4OO5t6TCA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA">▶ Play Trailer</a>
+                    <button type="button" class="play-trailer" data-trailer="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1">▶ Play Trailer</button>
+
                   </nav>
                 </section>
 

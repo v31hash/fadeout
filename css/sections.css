@@ -699,6 +699,16 @@
   font-size: 13px;
   color: #6b7280;
 }
+
+.upcoming {
+  width: 80px;
+  margin: 0;
+  padding: 2px 3px;
+  font-size: .65rem;
+  background-color: gold;
+  color: rgb(80, 81, 96);
+}
+
 .sType {
   margin-left: 10px;
   font-size: 12px;
@@ -806,7 +816,7 @@
   width: 150px;
 }
 
-.media-card h3, .media-card h4, .media-card h5 {
+.media-card h3, .media-card h4 {
   /* font-size: 1.1rem; */
   /* font-weight: 600; */
   margin-bottom: .5rem;
@@ -1202,7 +1212,7 @@
     height: 180px;
     width: 120px;
   }
-  .media-card h3, .media-card h4, .media-card h5 {
+  .media-card h3, .media-card h4 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: .5rem;
