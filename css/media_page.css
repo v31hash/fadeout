@@ -524,7 +524,7 @@
 /* Small Mobile Styles */
 @media (max-width: 480px) {
   .movie-backdrop {
-    background-position: left calc((50vw - 170px) - 30px) top;
+    background-position: left calc((50vw - 170px) - 20px) top;
   }
   
   .poster-card { order: 1; }
