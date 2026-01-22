@@ -524,6 +524,7 @@
 /* Small Mobile Styles */
 @media (max-width: 480px) {
   .movie-backdrop {
+    background-image: linear-gradient(to bottom right, rgba(73.5, 94.5, 178.5, 1), rgba(73.5, 94.5, 178.5, 0.84));
     background-position: left calc((50vw - 170px) - 20px) top;
   }
   
