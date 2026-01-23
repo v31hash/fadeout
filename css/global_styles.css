@@ -159,6 +159,109 @@ html, body {
   /* box-shadow: var(--shadow-xl); */
 }
 
+
+/* Wrap positions arrows over the scroller */
+.scroller-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The horizontal scroll container */
+.scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch; /* iOS momentum */
+  scroll-behavior: smooth;
+
+  /* room for arrows don't cover first/last cards */
+  padding: 0.25rem 3rem 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Turn .movie-grid into a horizontal row */
+.scroller .movie-grid {
+  display: flex;               /* key change */
+  flex-wrap: nowrap;           /* prevent wrapping */
+  gap: 16px;                   /* spacing between cards */
+
+  width: max-content;          /* ensures row expands */
+  padding: 4px;
+}
+
+/* Make sure each card stays card-sized in the row */
+.scroller .media-card.mCard {
+  flex: 0 0 auto;              /* don't shrink, don't wrap */
+  scroll-snap-align: start;    /* snapping */
+}
+
+/* Optional: set a consistent card width if your cards vary */
+.scroller .media-card.mCard {
+  width: 180px;                /* adjust to your design */
+}
+
+/* Optional: nice scrollbar */
+.scroller::-webkit-scrollbar {
+  display: none;
+  height: 10px;
+}
+.scroller::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+}
+.scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Scroll buttons */
+.scroll-btn {
+  position: absolute;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 28px;
+  line-height: 1;
+
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+
+  transition: transform .15s ease, background .15s ease, opacity .15s ease;
+  opacity: 0.95;
+}
+
+.scroll-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: scale(1.05);
+}
+
+/* Left/right placement */
+.scroll-btn.left  { left: 8px; }
+.scroll-btn.right { right: 8px; }
+
+/* Optional: show arrows only when hovering row (desktop) */
+@media (hover: hover) {
+  .scroll-btn { opacity: 0; }
+  .scroller-wrap:hover .scroll-btn { opacity: 0.95; }
+}
+
+/* Disabled state */
+.scroll-btn.is-disabled {
+  opacity: 0.25 !important;
+  pointer-events: none;
+}
+
+
+
 .btn {
   display: inline-flex;
   align-items: center;
