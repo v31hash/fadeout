@@ -73,7 +73,6 @@ function renderMovies(movies, max) {
     const mIconDiv = document.createElement('div');
     mIconDiv.classList.add('media-icon');
 
-    const posterDiv = document.createElement('div');
     const poster = document.createElement('img');
     poster.classList.add('media-poster');
 
@@ -131,8 +130,7 @@ function renderMovies(movies, max) {
     mScoreBadge.appendChild(score);
     mScoreActions.appendChild(mScoreBadge);
     
-    posterDiv.appendChild(poster);
-    mIconDiv.append(posterDiv, mScoreActions);
+    mIconDiv.append(poster, mScoreActions);
 
     mTitleDiv.append(title, date);
     mDetailsDiv.append(mTitleDiv);
