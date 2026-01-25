@@ -12,7 +12,11 @@
 
 /* padding */
 .movies, .tv, .ftw {
-  padding: var(--space-12) 0;
+  padding: var(--space-4) 0;
+}
+
+.movies {
+  padding-top: var(--space-8);
 }
 
 /* index.html */
@@ -82,7 +86,7 @@
 }
 
 .hero h1 {
-  font-size: 3rem;
+  /* font-size: 3rem; */
 }
 
 .hero-description {
@@ -689,8 +693,11 @@
   .sResults {
     display: none;
   }
-  .hero-title {
-    font-size: 2.5rem;
+  .gradient-text {
+    font-size: 2rem;
+  }
+  .hero-title h2 {
+    font-size: 1.5rem;
   }
   .hero-description {
     font-size: 1.125rem;
@@ -712,11 +719,12 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--space-4);
   }
-  .media-poster {
+  /* before scroller was added */
+  /* .media-poster {
     border-radius: var(--radius-lg);
     height: 180px;
     width: 120px;
-  }
+  } */
   .media-card h3, .media-card h4 {
     font-size: 1rem;
     font-weight: 600;
@@ -730,7 +738,7 @@
     /* box-shadow: var(--shadow-lg); */
     /* padding: var(--space-2); */
     transition: all 0.3s ease-in-out;
-    height: 300px;
+    height: 350px;
     width: 150px;
   }
 
@@ -809,10 +817,6 @@
   }
     .sResults {
     display: none;
-  }
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
   }
   .hero-description {
     font-size: 1rem;
