@@ -96,10 +96,6 @@
   margin-bottom: var(--space-8);
 }
 
-#pad {
-  padding: 0 20px 0px;
-}
-
 /* Screen-reader-only label helper */
 .sr-only {
   position: absolute;
@@ -261,7 +257,7 @@
   display: flex;
   justify-content: flex-start;
   /* align-items: center; */
-  align-content: center;
+  align-content: left;
   text-align: left;
   padding: 0 40px;
   /* margin-bottom: var(--space-6); */
@@ -279,6 +275,10 @@
   color: var(--gray-600);
   max-width: 600px;
   /* margin: 0 auto; */
+}
+
+.movieHead, .tvHead, .ftwHead, #pad {
+  padding-left: 10px;
 }
 
 .search-box {
@@ -473,7 +473,7 @@
 .switch-button-label-span {
   position: relative;
   bottom: 15px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 
@@ -774,13 +774,6 @@
     transform: none;
   }
 
-  /* Reduce header margins */
-  .section-header {
-    margin-bottom: var(--space-8) !important;
-  }
-  .section-header h2 {
-    font-size: 2rem;
-  }
   .green-content h2 {
     font-size: 1.875rem;
   }
@@ -827,17 +820,12 @@
 
   .section-header {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    margin-bottom: var(--space-6);
+    justify-content: flex-start;
+    padding: 0 10px;
   }
-
-  .section-header h2 {
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: var(--space-4);
+  
+  .scroller-wrap {
+    padding: 0 10px;
   }
 
   .search-input::placeholder {
