@@ -24,6 +24,7 @@ export async function loadTV({ apiKey, baseUrl, max = 20 }) {
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     const data = await res.json();
     const items = (data.results ?? []).map(TVShow.fromJson);
+    console.log(items);
     renderTV(items, max);
   } catch (err) {
     console.error('Failed to load tv shows:', err);

@@ -30,6 +30,41 @@ function selectTopCredits(credits, type = 'movie') {
   return [...pickedCrew, ...pickedCast];
 }
 
+// lightbox for ftw-grid
+(function bindFtwGridLightbox() {
+  const grid = document.querySelector(".ftw-grid"); // <-- change selector if yours differs
+  if (!grid) return;
+
+  function openFromCard(cardEl) {
+    const id = cardEl.dataset.id;
+    const type = cardEl.dataset.type || "movie";
+
+    if (!id) return;
+
+    if (type === "tv") window.getTvDetails?.(id);
+    else window.getMovieDetails?.(id);
+  }
+
+  // Mouse / touch click
+  grid.addEventListener("click", (e) => {
+    const card = e.target.closest(".media-card");
+    if (!card || !grid.contains(card)) return;
+    openFromCard(card);
+  });
+
+  // Keyboard: Enter/Space on focused card
+  grid.addEventListener("keydown", (e) => {
+    const card = e.target.closest(".media-card");
+    if (!card || !grid.contains(card)) return;
+
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openFromCard(card);
+    }
+  });
+})();
+
+
 // ====== Lightbox IIFE ======
 (function renderLightbox() {
   const dialog = document.getElementById('movie-hero-dialog');
@@ -109,36 +144,36 @@ function selectTopCredits(credits, type = 'movie') {
 
   // ---- Populate for Movie ----
   function setDialogFromMovie(movie) {
-    const posterEl   = dialog.querySelector('.poster-card img');
-    const titleEl    = dialog.querySelector('h1.title');
-    const yearEl     = dialog.querySelector('.title__year');
+    const posterElm   = dialog.querySelector('.poster-card img');
+    const titleElm    = dialog.querySelector('h1.title');
+    const yearElm     = dialog.querySelector('.title__year');
     const metaEls    = dialog.querySelectorAll('.meta li');
-    const scoreEl    = dialog.querySelector('.score-badge__value');
-    const trailerEl  = dialog.querySelector('.btn.btn--ghost');
-    const taglineEl  = dialog.querySelector('.tagline');
+    const scoreElm    = dialog.querySelector('.score-badge__value');
+    const trailerElm  = dialog.querySelector('.btn.btn--ghost');
+    const taglineElm  = dialog.querySelector('.tagline');
     const overviewP  = dialog.querySelector('.overview p');
     const creditsBox = dialog.querySelector('.credits');
 
-    if (posterEl) { posterEl.src = movie.getPosterUrl('w780'); posterEl.alt = movie.title ?? 'Poster'; }
-    if (titleEl) {
-      if (titleEl.childNodes[0] && titleEl.childNodes[0].nodeType === 3)
-        titleEl.childNodes[0].nodeValue = (movie.title ?? 'Untitled') + ' ';
+    if (posterElm) { posterElm.src = movie.getPosterUrl('w780'); posterElm.alt = movie.title ?? 'Poster'; }
+    if (titleElm) {
+      if (titleElm.childNodes[0] && titleElm.childNodes[0].nodeType === 3)
+        titleElm.childNodes[0].nodeValue = (movie.title ?? 'Untitled') + ' ';
       else
-        titleEl.textContent = (movie.title ?? 'Untitled');
+        titleElm.textContent = (movie.title ?? 'Untitled');
     }
-    if (yearEl && movie.releaseDate) yearEl.textContent = `(${new Date(movie.releaseDate).getFullYear()})`;
+    if (yearElm && movie.releaseDate) yearElm.textContent = `(${new Date(movie.releaseDate).getFullYear()})`;
 
     if (metaEls[0]) metaEls[0].textContent = movie.releaseDate ?? 'Date not available';
     if (metaEls[1]) metaEls[1].textContent = movie.certification || '';
     if (metaEls[2]) metaEls[2].textContent = formatGenres(movie.genres);
     if (metaEls[3]) metaEls[3].textContent = formatRuntime(movie.runtime);
 
-    if (scoreEl) scoreEl.textContent = movie.getScorePercentage();
+    if (scoreElm) scoreElm.textContent = movie.getScorePercentage();
 
-    if (trailerEl) trailerEl.href = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
+    if (trailerElm) trailerElm.href = `https://www.youtube.com/embed/${movie.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
     
     
-    if (taglineEl) taglineEl.textContent = movie.tagline ?? '';
+    if (taglineElm) taglineElm.textContent = movie.tagline ?? '';
     if (overviewP) overviewP.textContent = movie.overview ?? '';
 
     if (creditsBox) {
@@ -157,24 +192,24 @@ function selectTopCredits(credits, type = 'movie') {
 
   // ---- Populate for TV ----
   function setDialogFromTV(show) {
-    const posterEl   = dialog.querySelector('.poster-card img');
-    const titleEl    = dialog.querySelector('h1.title');
-    const yearEl     = dialog.querySelector('.title__year');
+    const posterElm   = dialog.querySelector('.poster-card img');
+    const titleElm    = dialog.querySelector('h1.title');
+    const yearElm     = dialog.querySelector('.title__year');
     const metaEls    = dialog.querySelectorAll('.meta li');
-    const scoreEl    = dialog.querySelector('.score-badge__value');
-    const trailerEl  = dialog.querySelector('.btn.btn--ghost');
-    const taglineEl  = dialog.querySelector('.tagline');
+    const scoreElm    = dialog.querySelector('.score-badge__value');
+    const trailerElm  = dialog.querySelector('.btn.btn--ghost');
+    const taglineElm  = dialog.querySelector('.tagline');
     const overviewP  = dialog.querySelector('.overview p');
     const creditsBox = dialog.querySelector('.credits');
 
-    if (posterEl) { posterEl.src = show.getPosterUrl('w780'); posterEl.alt = show.name ?? 'Poster'; }
-    if (titleEl) {
-      if (titleEl.childNodes[0] && titleEl.childNodes[0].nodeType === 3)
-        titleEl.childNodes[0].nodeValue = (show.name ?? 'Untitled') + ' ';
+    if (posterElm) { posterElm.src = show.getPosterUrl('w780'); posterElm.alt = show.name ?? 'Poster'; }
+    if (titleElm) {
+      if (titleElm.childNodes[0] && titleElm.childNodes[0].nodeType === 3)
+        titleElm.childNodes[0].nodeValue = (show.name ?? 'Untitled') + ' ';
       else
-        titleEl.textContent = (show.name ?? 'Untitled');
+        titleElm.textContent = (show.name ?? 'Untitled');
     }
-    if (yearEl && show.firstAirDate) yearEl.textContent = `(${new Date(show.firstAirDate).getFullYear()})`;
+    if (yearElm && show.firstAirDate) yearElm.textContent = `(${new Date(show.firstAirDate).getFullYear()})`;
 
     if (metaEls[0]) metaEls[0].textContent = show.firstAirDate ?? 'Date not available';
     if (metaEls[1]) metaEls[1].textContent = show.certification || '';
@@ -184,9 +219,9 @@ function selectTopCredits(credits, type = 'movie') {
       metaEls[3].textContent = avg ? `${formatRuntime(avg)} per episode` : '';
     }
 
-    if (scoreEl) scoreEl.textContent = show.getScorePercentage();
-    if (trailerEl) trailerEl.href = `https://www.youtube.com/embed/${show.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
-    if (taglineEl) taglineEl.textContent = show.tagline ?? '';
+    if (scoreElm) scoreElm.textContent = show.getScorePercentage();
+    if (trailerElm) trailerElm.href = `https://www.youtube.com/embed/${show.trailerKey}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1`;
+    if (taglineElm) taglineElm.textContent = show.tagline ?? '';
     if (overviewP) overviewP.textContent = show.overview ?? '';
 
     if (creditsBox) {
@@ -199,7 +234,7 @@ function selectTopCredits(credits, type = 'movie') {
       });
     }
 
-    // NEW: set or remove the trailer iframe
+    // set or remove the trailer iframe
     setTrailer(dialog, show.trailerKey);
   }
 
@@ -209,7 +244,7 @@ function selectTopCredits(credits, type = 'movie') {
     openDialog();
   }
 
-  // Close handlers + accessibility
+  // close handlers + accessibility
   closeBtn?.addEventListener('click', closeDialog);
   dialog.addEventListener('click', (e) => {
     const rect = dialog.querySelector('.lightbox__content').getBoundingClientRect();

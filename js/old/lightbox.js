@@ -1,5 +1,4 @@
 
-// lightbox.js (refactored)
 (function () {
   const dialog = document.getElementById('movie-hero-dialog');
   const closeBtn = dialog.querySelector('.lightbox__close');
@@ -20,7 +19,7 @@
       document.body.classList.add('no-scroll');
     }
     
-    // Focus a sensible element
+    // focus a sensible element
     const focusable = dialog.querySelector('.lightbox__close');
     (focusable ?? dialog).focus();
   }
@@ -45,7 +44,7 @@
     if (previousActive) previousActive.focus();
   }
 
-  // --- NEW: populate dialog from a Movie instance ---
+  // --- populate dialog from a Movie instance ---
   function setDialogFromMovie(movie) {
     // These selectors assume the HTML from section 2
     const posterEl   = dialog.querySelector('.lightbox__poster');
@@ -55,12 +54,12 @@
     const overviewEl = dialog.querySelector('.lightbox__overview');
     const iframeEl   = dialog.querySelector('.video-embed__frame');
 
-    // Use Movie helpers & properties
-    posterEl.src = movie.getPosterUrl('w780');           // good size for hero/lightbox
-    posterEl.alt = movie.title ?? 'Poster';              // fallback title
+    // use Movie helpers & properties
+    posterEl.src = movie.getPosterUrl('w780'); // good size for hero/lightbox
+    posterEl.alt = movie.title ?? 'Poster';// fallback title
     titleEl.textContent = movie.title ?? 'Untitled';
     dateEl.textContent = movie.releaseDate ?? 'Date not available';
-    scoreEl.textContent = movie.getScorePercentage();    // e.g., "76%"
+    scoreEl.textContent = movie.getScorePercentage(); // e.g., "76%"
     overviewEl.textContent = movie.overview ?? '';
 
     // Optional: if you have a trailer key, set the iframe and unhide
@@ -74,14 +73,14 @@
     }
   }
 
-  // --- NEW: public function to open dialog with a movie ---
+  // --- public function to open dialog with a movie ---
   function openMovieDialog(movie) {
-    setDialogFromMovie(movie);        // populate using the Movie class
-    openDialog();                     // reuse your existing open routine
+    setDialogFromMovie(movie); // populate using the Movie class
+    openDialog(); // reuse your existing open routine
   }
 
   // Open handlers
-  // Keep your existing trigger wiring (optional)
+  // Keep existing trigger wiring (optional)
   triggers.forEach(t => t.addEventListener('click', openDialog));
   // Close handlers
   // Close handlers & accessibility (unchanged)

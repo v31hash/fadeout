@@ -25,6 +25,7 @@ export async function loadMovies({ apiKey, baseUrl, max = 20 }) {
     const data = await res.json();
     const items = (data.results ?? []).map(Movie.fromJson);
     renderMovies(items, max);
+    console.log(items);
   } catch (err) {
     console.error('Failed to load movies:', err);
     renderMovies([], 0); // degrade gracefully
