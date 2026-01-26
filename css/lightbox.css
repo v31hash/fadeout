@@ -12,16 +12,92 @@
   --gap: 10px;
   --maxw: 1200px;
 }
+*, *::before, *::after { box-sizing: border-box; }
+/* ===== Lightbox (dialog) ===== */
+.lightbox {
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: min(96vw, 1200px);
+  max-height: min(96vh, 96dvh);
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgba(2, 8, 23, 0.7);
+}
+
+.lightbox[open] .lightbox__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.lightbox__content {
+  position: relative;
+  padding: 10px;
+  /* inset: 2% 2%; */
+  width: 100%;
+  max-height: min(96vh, 96dvh);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 100%;
+  overflow: auto;
+}
+
+
+/* Close button */
+.lightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 10;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.lightbox__close:focus-visible { outline: 2px solid var(--primary); }
+
+/* Keep your hero centered within the dialog */
+.lightbox .movie-hero {
+  height: auto;
+  /* min-height: 100%; */
+  padding: 24px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Triggers */
+.poster-trigger {
+  width: 200px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+}
+
+.open-hero.btn { margin: 14px 0; }
+
+/* Optional: when dialog fallback uses non-native overlay */
+/* .lightbox__backdrop img {
+
+} */
+
 
 /* ===== Hero Container ===== */
 .movie-hero {
   position: relative;
   overflow: hidden;
-  padding: 24px;
+  padding: 14px;
 }
 
 .movie-hero__content {
-  grid-template-columns: minmax(200px, 370px) 1fr;
+  grid-template-columns: minmax(200px, 470px) 1fr;
   gap: clamp(5px, 1vw, var(--gap));
 }
 
@@ -45,13 +121,14 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  /* width: 367px; height: 600px; */
 }
 
 .poster-card__figure {
   margin: 0;
   aspect-ratio: 2/3;
   overflow: hidden;
-  width: 100%; height: 100%;
+  /* width: 100%; height: 100%; */
 }
 
 .poster-card__figure img {
@@ -61,6 +138,7 @@
 .poster-card__cta {
   display: flex; align-items: center; justify-content: space-between;
   gap: 12px; padding: 12px 14px; background: rgba(0,0,0,0.35);
+  height: 100px;
 }
 
 .poster-card__service-logo {
@@ -78,6 +156,7 @@
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   gap: 14px;
+  font-size: medium;
 }
 
 /* ===== Video Embed (responsive) ===== */
@@ -91,6 +170,7 @@
   aspect-ratio: 16 / 9;
   margin-bottom: 12px;
   min-height: 0;
+  /* width: 600px; */
 }
 
 .video-embed__frame {
@@ -187,74 +267,6 @@
   margin-bottom: 10px;
 }
 
-/* ===== Lightbox (dialog) ===== */
-.lightbox {
-  border: none;
-  padding: 0;
-  background: transparent;
-  width: 100%;
-  max-width: none;
-}
-
-.lightbox::backdrop {
-  background: rgba(2, 8, 23, 0.7);
-}
-
-.lightbox[open] .lightbox__content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-.lightbox__content {
-  position: fixed;
-  inset: 2% 2%;
-  width: 96vw;
-  max-width: 1200px;
-  max-height: 96vh;
-  overflow: auto;
-}
-
-
-/* Close button */
-.lightbox__close {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  z-index: 10;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.06);
-  color: var(--text);
-  width: 40px; height: 40px;
-  border-radius: 999px;
-  font-size: 18px;
-  cursor: pointer;
-}
-.lightbox__close:focus-visible { outline: 2px solid var(--primary); }
-
-/* Keep your hero centered within the dialog */
-.lightbox .movie-hero {
-  height: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg);
-  padding: 24px;
-}
-
-/* Triggers */
-.poster-trigger {
-  width: 200px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
-}
-
-.open-hero.btn { margin: 14px 0; }
-
-/* Optional: when dialog fallback uses non-native overlay */
-/* .lightbox__backdrop img {
-
-} */
 
 /* ===== Responsive ===== */
 /* Constrain for large screens */
@@ -268,12 +280,12 @@
 
 @media (max-width: 980px) {
   /* .lightbox__content { height: auto; width: auto;} */
-  /* .movie-hero__content { grid-template-columns: 280px 1fr; } */
+  .movie-hero { width: auto; }
   /* .movie-hero__content { grid-template-columns: minmax(200px, 370px) 1fr;} */
   .lightbox__content { height: auto; width: auto;}
   .poster-card { display: none; }
   .poster-card__figure img { display: none; }
-  .info-panel { height: auto; width: auto; left: 10px; }
+  .info-panel { height: auto; width: auto; left: auto; top: auto; }
   .lightbox__content { font-size: 0.9rem; }
 
   .movie-hero {
@@ -313,8 +325,8 @@
     width: 600px;
   }
   .movie-hero__content {
-    grid-template-columns: minmax(100px, 480px) 1fr;
-    gap: clamp(5px, 1vw, var(--gap));
+    /* grid-template-columns: minmax(100px, 480px) 1fr; */
+    /* gap: clamp(5px, 1vw, var(--gap)); */
   }
   .lightbox .movie-hero {
     height: auto;
