@@ -1029,6 +1029,10 @@ p {
   .mCard {
     /* padding: var(--space-4); */
   }
+  .sCard {
+    /* padding: var(--space-4); */
+    width: 350px;
+  }
 
   .brand-logo {
     height: 100px;

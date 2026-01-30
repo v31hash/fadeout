@@ -293,7 +293,7 @@
   display: grid;
   grid-template-columns: 2fr 6fr;
   gap: var(--space-2);
-  padding: 30px 40px;
+  padding: 30px 10px;
   align-items: flex-start;
 }
 
@@ -356,7 +356,7 @@
 }
 
 .sDate {
-  font-size: 13px;
+  /* font-size: 13px; */
   color: #6b7280;
 }
 
