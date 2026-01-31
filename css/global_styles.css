@@ -130,12 +130,12 @@ html, body {
 .sCard {
   /* background: rgb(173, 173, 173); */
   box-shadow: var(--shadow-md);
-  /* padding: var(--space-2); */
   border-radius: var(--radius-md);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   transition: all 0.3s ease-in-out;
-  height: 140px;
-  width: 810px;
+  width: 100%;
+  max-width: 100%;
+  height: auto; 
 }
 
 .sResults {
@@ -149,10 +149,7 @@ html, body {
   width: 270px;
 }
 
-.sQuery {
-  /* background: rgb(179, 174, 144); */
-  width: 810px;
-}
+.sQuery {}
 
 .mCard:hover, .sCard:hover {
   transform: translateY(-3px);
@@ -980,6 +977,10 @@ p {
     padding: var(--space-6);
   }
 
+  .sCard {
+    /* width: 700px; */
+  }
+
   .cart-link {
     display: none;
   }
@@ -1030,8 +1031,7 @@ p {
     /* padding: var(--space-4); */
   }
   .sCard {
-    /* padding: var(--space-4); */
-    width: 350px;
+    /* width: 350px; */
   }
 
   .brand-logo {
